@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # LLM-Twin
 
 - This project was inspired by the book: [LLM Engineers's Handbook](https://subscription.packtpub.com/book/data/9781836200079/1). 
@@ -14,9 +16,11 @@
   - [Overview](#overview)
     - [Building ML Systems With Feature | Training | Inference (FTI)Pipelines](#building-ml-systems-with-feature--training--inference-ftipipelines)
   - [Installation](#installation)
+    - [pyenv](#pyenv)
     - [UV](#uv)
     - [Poetry](#poetry)
     - [Poe The Poet: Task Exection Tool](#poe-the-poet-task-exection-tool)
+  - [Orchestrator: ZenML](#orchestrator-zenml)
 
 ## Overview
 
@@ -75,6 +79,8 @@
 [Image Source](https://subscription.packtpub.com/book/data/9781836200079/1/ch01lvl1sec05/designing-the-system-architecture-of-the-llm-twin)
 
 ## Installation
+
+### pyenv
 
 - Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) for managing Python versions.
 - Install the required Python version using the following command:
@@ -207,3 +213,14 @@ poetry run pip pre-commit install
 ```sh
 poetry lock "--no-update"
 ```
+
+## Orchestrator: [ZenML](https://docs.zenml.io/getting-started/core-concepts)
+
+- The code in this section will be divided into two parts:
+1. **Steps**
+     - It converts a function into a pipeline step.
+     - It defines a specific task.
+
+2. **Pipelines**
+     - It defines a function as a pipeline.
+     - It groups multiple steps together.
