@@ -1,3 +1,4 @@
+"""The tutorial can be found at: https://pymongo.readthedocs.io/en/stable/tutorial.html#tutorial"""
 import uuid
 from abc import ABC
 from typing import Any, Generic, Type, TypeVar
@@ -12,6 +13,8 @@ from llm_engineering.settings import settings
 
 _database = connection.get_database(settings.DATABASE_NAME)
 
+# TypeVar T is a generic type variable that ensures type safety. It's bounded to NoSQLBaseDocument. 
+# i.e. any type used in place of T must be a subclass of NoSQLBaseDocument.
 T = TypeVar("T", bound="NoSQLBaseDocument")
 
 
