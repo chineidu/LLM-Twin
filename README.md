@@ -14,6 +14,8 @@
   - [Overview](#overview)
     - [Building ML Systems With Feature | Training | Inference (FTI)Pipelines](#building-ml-systems-with-feature--training--inference-ftipipelines)
   - [Installation](#installation)
+    - [UV](#uv)
+    - [Poetry](#poetry)
     - [Poe The Poet: Task Exection Tool](#poe-the-poet-task-exection-tool)
 
 ## Overview
@@ -108,6 +110,31 @@ pyenv local <your-version>
 pyenv local 3.11.8
 ```
 
+### [UV](https://docs.astral.sh/uv/guides/projects/)
+
+- Install UV for Python using the following command:
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh 
+
+# Install a specific version:
+curl -LsSf https://astral.sh/uv/<your-version>/install.sh | sh
+
+# E.g
+curl -LsSf https://astral.sh/uv/0.5.1/install.sh | sh
+```
+
+- Add a dependency group  to the project using the following command:
+
+```sh
+uv add --group <group-name> <dependency-name>
+
+# E.g
+uv add --group aws sagemaker
+```
+
+### Poetry
+
 - Install Poetry using the following command:
 
 ```sh
@@ -118,6 +145,12 @@ curl -sSL https://install.python-poetry.org | python3 - --version 1.8.3
 
 # Or if you want to install the latest version:
 curl -sSL https://install.python-poetry.org | python3 -
+```
+
+- Uninstall Poetry using the following command:
+
+```sh
+curl -sSL https://install.python-poetry.org | python3 - --uninstall
 ```
 
 - To update Poetry, use the following command:
@@ -167,4 +200,10 @@ poetry self add "poethepoet[poetry_plugin]"
 
 ```sh
 poetry run pip pre-commit install
+```
+
+- Update the `.lock` file using the following command:
+
+```sh
+poetry lock "--no-update"
 ```
