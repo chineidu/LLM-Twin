@@ -1,3 +1,4 @@
+from typing import Any
 from loguru import logger
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
@@ -25,7 +26,7 @@ class MongoDatabaseConnector:
 
     _instance: MongoClient | None = None
 
-    def __new__(cls, *args: tuple, **kwargs: dict) -> MongoClient:
+    def __new__(cls, *args: tuple[Any], **kwargs: dict[str, Any]) -> MongoClient:
         """
         Create or return the existing MongoDB client connection.
 
@@ -53,9 +54,8 @@ class MongoDatabaseConnector:
                 logger.error(f"Failed to connect to MongoDB: {e!s}")
                 raise
 
-        logger.info(
-                f"Connected to MongoDB URI successfully: {settings.DATABASE_HOST}"
-            )
+        logger.info(f"Connected to MongoDB URI successfully: {settings.DATABASE_HOST}")
         return cls._instance
+
 
 connection: MongoClient = MongoDatabaseConnector()

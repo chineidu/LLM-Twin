@@ -13,9 +13,9 @@ from llm_engineering.settings import settings
 
 _database = connection.get_database(settings.DATABASE_NAME)
 
-# TypeVar T is a generic type variable that ensures type safety. It's bounded to NoSQLBaseDocument. 
+# TypeVar T is a generic type variable that ensures type safety. It's bounded to NoSQLBaseDocument.
 # i.e. any type used in place of T must be a subclass of NoSQLBaseDocument.
-T = TypeVar("T", bound="NoSQLBaseDocument")
+T = TypeVar("T", bound="NoSQLBaseDocument")  # type: ignore
 
 
 class NoSQLBaseDocument(BaseModel, ABC, Generic[T]):
@@ -61,7 +61,7 @@ class NoSQLBaseDocument(BaseModel, ABC, Generic[T]):
         return hash(self.id)
 
     @classmethod
-    def from_mongo(cls: Type[T], data: dict) -> T:
+    def from_mongo(cls: Type[T], data: dict) -> T:  # type: ignore
         """
         Create document instance from MongoDB data.
 
@@ -109,7 +109,7 @@ class NoSQLBaseDocument(BaseModel, ABC, Generic[T]):
 
         return dict_
 
-    def to_mongo(self: T, **kwargs) -> dict:
+    def to_mongo(self: T, **kwargs) -> dict:  # type: ignore
         """
         Convert document to MongoDB format.
 
@@ -191,7 +191,7 @@ class NoSQLBaseDocument(BaseModel, ABC, Generic[T]):
                 return cls.from_mongo(instance)
 
             new_instance = cls(**filter_options)
-            new_instance = new_instance.save()
+            new_instance = new_instance.save()  # type: ignore
 
             return new_instance
 

@@ -34,7 +34,7 @@ repos:
       # Run the linter.
       - id: ruff
         args: [--fix]
-        exclude: ^(notebook/Projects/Retriever/pdf-chatbot)/ # Exclude multiple dirs
+        exclude: ^(notebook/Projects/Retriever/pdf-chatbot)
       # Run the formatter.
       - id: ruff-format
 

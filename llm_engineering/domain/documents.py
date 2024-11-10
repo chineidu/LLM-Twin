@@ -1,4 +1,5 @@
 from abc import ABC
+from typing import Any
 
 from pydantic import UUID4, Field
 
@@ -6,7 +7,7 @@ from .base import NoSQLBaseDocument
 from .types import DataCategory
 
 
-class UserDocument(NoSQLBaseDocument):
+class UserDocument(NoSQLBaseDocument):  # type: ignore
     """
     Document representing a user in the system.
 
@@ -17,6 +18,7 @@ class UserDocument(NoSQLBaseDocument):
     last_name : str
         The user's last name
     """
+
     first_name: str
     last_name: str
 
@@ -34,9 +36,9 @@ class UserDocument(NoSQLBaseDocument):
             The concatenated first and last name
         """
         return f"{self.first_name} {self.last_name}"
-    
 
-class Document(NoSQLBaseDocument, ABC):
+
+class Document(NoSQLBaseDocument, ABC):  # type: ignore
     """
     Abstract base class for all document types.
 
@@ -51,7 +53,8 @@ class Document(NoSQLBaseDocument, ABC):
     author_full_name : str
         The full name of the document's author
     """
-    content: dict
+
+    content: dict[str, Any]
     platform: str
     authod_id: UUID4 = Field(alias="author_id")
     author_full_name: str = Field(alias="author_full_name")
@@ -68,11 +71,13 @@ class RepositoryDocument(Document):
     link : str
         The URL link to the repository
     """
+
     name: str
     link: str
 
     class Settings:
         name = DataCategory.REPOSITORIES
+
 
 class PostDocument(Document):
     """
@@ -85,11 +90,13 @@ class PostDocument(Document):
     link : str | None
         The URL link to the post, if any
     """
+
     image: str | None = None
     link: str | None = None
 
     class Settings:
         name = DataCategory.POSTS
+
 
 class ArticleDocument(Document):
     """
@@ -100,6 +107,7 @@ class ArticleDocument(Document):
     link : str | None
         The URL link to the article, if any
     """
+
     link: str | None = None
 
     class Settings:

@@ -1,4 +1,5 @@
-from enum import StrEnum
+from enum import StrEnum  # type: ignore
+
 
 class DataCategory(StrEnum):
     PROMPT = "prompt"

@@ -92,7 +92,7 @@ class Settings(BaseSettings):
             The maximum number of tokens allowed for the current OpenAI model,
             with a 10% safety margin applied.
         """
-        official_max_token_window: dict[str, int] = {
+        official_max_token_window: int = {
             "gpt-3.5-turbo": 16_385,
             "gpt-4-turbo": 128_000,
             "gpt-4o": 128_000,
