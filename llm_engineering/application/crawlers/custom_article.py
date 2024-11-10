@@ -18,6 +18,7 @@ class CustomArticleCrawler(BaseCrawler):
     model : ArticleDocument
         The document model for storing article data.
     """
+
     model: ArticleDocument
 
     def __init__(self) -> None:
@@ -46,7 +47,7 @@ class CustomArticleCrawler(BaseCrawler):
         if old_model is not None:
             logger.info(f"Article already exists in the database: {link}")
             return
-        
+
         logger.info(f"Extracting article: {link}")
         loader: AsyncHtmlLoader = AsyncHtmlLoader([link])
         docs = loader.load()
@@ -67,8 +68,8 @@ class CustomArticleCrawler(BaseCrawler):
 
         user = kwargs.get("user")
         instance: ArticleDocument = self.model(
-            author_id=user.id,
-            author_full_name=user.full_name,
+            author_id=user.id,  # type: ignore
+            author_full_name=user.full_name,  # type: ignore
             content=content,
             platform=platform,
             link=link,

@@ -19,6 +19,8 @@ def get_or_create_user(user_full_name: str) -> Annotated[UserDocument, "user"]:
         output_name="user", metadata=_get_metadata(user_full_name, user)
     )
 
+    return user
+
 
 def _get_metadata(user_full_name: str, user: UserDocument) -> dict[str, dict[str, Any]]:
     return {
