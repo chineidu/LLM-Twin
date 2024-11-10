@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from tempfile import mkdtemp
 from typing import Any
 
-import chromedriver_autoinstaller
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -12,7 +11,7 @@ from llm_engineering.domain.documents import NoSQLBaseDocument
 
 # Check if the current version of chromedriver exists and
 # install otherwise download it automatically.
-chromedriver_autoinstaller.install()
+# chromedriver_autoinstaller.install()
 
 
 class BaseCrawler(ABC):

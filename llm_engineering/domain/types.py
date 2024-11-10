@@ -11,5 +11,5 @@ class DataCategory(StrEnum):
     PREFERENCE_DATASET = "preference_dataset"
 
     POSTS = "posts"
-    ARTICLESS = "articles"
+    ARTICLES = "articles"
     REPOSITORIES = "repositories"

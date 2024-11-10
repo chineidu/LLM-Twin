@@ -50,11 +50,14 @@ class MongoDatabaseConnector:
         if cls._instance is None:
             try:
                 cls._instance = MongoClient(settings.DATABASE_HOST)
+                cls._instance.admin.command("ping")  # Verifies the connection
+                logger.info(
+                    f"Connected to MongoDB URI successfully: {settings.DATABASE_HOST}"
+                )
             except ConnectionFailure as e:
                 logger.error(f"Failed to connect to MongoDB: {e!s}")
                 raise
 
-        logger.info(f"Connected to MongoDB URI successfully: {settings.DATABASE_HOST}")
         return cls._instance
 
 

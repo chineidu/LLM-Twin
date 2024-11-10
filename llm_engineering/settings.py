@@ -49,8 +49,8 @@ class Settings(BaseSettings):
     QDRANT_APIKEY: str | None = None
 
     # AWS Authentication
-    AWS_ACCESS_KEY_ID: str | None = None
-    AWS_SECRET_ACCESS_KEY: str | None = None
+    AWS_ACCESS_KEY: str | None = None
+    AWS_SECRET_KEY: str | None = None
     AWS_REGION: str = "eu-west-1"
     AWS_ARN_ROLE: str | None = None
 
@@ -113,14 +113,15 @@ class Settings(BaseSettings):
         """
         try:
             logger.info("Loading settings from the ZenML secret store.")
+
             settings_secret = Client().get_secret("settings")
-            settings = cls(**settings_secret.secret_values)
+            settings = Settings(**settings_secret.secret_values)
         except (RuntimeError, KeyError):
             logger.warning(
                 "Failed to load settings from the ZenML secret store. "
                 "Defaulting to loading the settings from the .env file."
             )
-            settings = cls()
+            settings = Settings()
 
         return settings
 

@@ -25,7 +25,7 @@ def split_user_full_name(
     ImproperlyConfiguredException
         If the user name is None or empty after splitting.
     """
-    if user in None:  # type: ignore
+    if user is None:  # type: ignore
         raise ImproperlyConfiguredException("User full name is empty.")
 
     name_tokens: list[str] = user.split(" ")  # type: ignore
